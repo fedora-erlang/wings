@@ -30,9 +30,6 @@ BEAM = 	$(LIBDIR)/wpc_pnoise.beam \
 	$(LIBDIR)/pnoise.beam \
 	$(LIBDIR)/wpc_pick.beam
 
-UNIVERSAL_FLAGS =
-COMMON_CFLAGS = -Wall -Werror -O3
-
 ifdef USEMINGWGCC
  SO_EXT = dll
  LIBS = -shared
@@ -47,8 +44,7 @@ else
    GL_LIBS =
  else
    LIBS = -shared -fpic
-   GL_LIBS = -L/usr/local/lib -lGLU -lGL
-   CFLAGS = $(COMMON_CFLAGS)
+   GL_LIBS = -lGLU -lGL
  endif
 endif
 
@@ -72,7 +68,7 @@ $(LIBDIR)/%.beam: %.erl
 
 $(LIBDIR)/%.$(SO_EXT): %.c
 	install -d $(LIBDIR)
-	$(GCC) $(COMMON_CFLAGS) -I$(ERL_INC) -o $@ $< $(LIBS) $(GL_LIBS)
+	$(GCC) $(CFLAGS) -fPIC -I$(ERL_INC) -o $@ $< $(LIBS) $(GL_LIBS)
 
 clean:
 	rm -f $(TARGET_FILES)
