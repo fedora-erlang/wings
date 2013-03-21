@@ -46,9 +46,6 @@ ERL_DIR := $(shell echo $(FRD) | $(ERL) | sed -n '/^=:/s/^=://p')
 ERL_INC = "$(ERL_DIR)/usr/include"
 BEAM = $(LIBDIR)/wpc_pick.beam
 
-UNIVERSAL_FLAGS =
-COMMON_CFLAGS = -Wall
-
 ifeq ($(UseMCL),true)
  OUT = -Fe:
  SO_EXT = dll
@@ -70,8 +67,7 @@ else
     GL_LIBS =
   else
     LIBS = -shared -fpic
-    GL_LIBS += -L/usr/local/lib -lGLU -lGL
-    CFLAGS += $(COMMON_CFLAGS) -Werror -O3
+    GL_LIBS += -lGLU -lGL
   endif
  endif
 endif
@@ -95,7 +91,7 @@ $(LIBDIR)/%.beam: %.erl
 
 $(LIBDIR)/%.$(SO_EXT): %.c
 	install -d $(LIBDIR)
-	$(GCC) $(CFLAGS) -I$(ERL_INC) $(OUT) $@ $< $(LIBS) $(GL_LIBS)
+	$(GCC) $(CFLAGS) -fPIC -I$(ERL_INC) -o $@ $< $(LIBS) $(GL_LIBS)
 
 clean:
 	rm -f $(TARGET_FILES) vc*.pdb wings_pick_drv.obj
