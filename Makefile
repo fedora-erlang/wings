@@ -75,7 +75,6 @@ macosx: all lang
 unix: all lang
 	(cd plugins_src/jpeg; $(MAKE))
 	(cd plugins_src/jpeg; $(MAKE) lang)
-	unix/make_installer
 
 #
 # Build the source distribution.
