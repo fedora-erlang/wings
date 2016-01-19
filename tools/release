@@ -34,7 +34,11 @@ main(_) ->
     end.
 
 release() ->
-    ok = file:set_cwd(lib_dir(wings)),
+    WingsDir = code:lib_dir(wings),
+    case WingsDir of
+        {error,bad_name} -> ok;
+        _ -> ok = file:set_cwd(WingsDir)
+    end,
     WingsVsn = get_vsn("vsn.mk", "WINGS_VSN"),
     Build = filename:absname("build"),
     run("rm", ["-rf",Build]),
