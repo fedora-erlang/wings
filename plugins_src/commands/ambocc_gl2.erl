@@ -14,8 +14,8 @@
 -export([ambient_occlusion/1]).
 
 -define(NEED_OPENGL, 1).
--include_lib("wings/src/wings.hrl").
--include_lib("wings/e3d/e3d_image.hrl").
+-include_lib("wings.hrl").
+-include_lib("e3d_image.hrl").
 
 -record(ao, {df, vabs, fbo, tex, cleanup_fbo, buf}).
 -define(TEX_SZ, 1024).

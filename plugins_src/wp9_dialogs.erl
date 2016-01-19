@@ -15,8 +15,8 @@
 -export([init/1]).
 -import(lists, [sort/1]).
 
--include_lib("wings/intl_tools/wings_intl.hrl").
--include_lib("wings/e3d/e3d_image.hrl").
+-include_lib("intl_tools/wings_intl.hrl").
+-include_lib("e3d_image.hrl").
 -include_lib("wx/include/wx.hrl").  %% includes wx headers
 
 init(Next) ->
