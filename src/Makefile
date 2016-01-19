@@ -148,7 +148,7 @@ APP_TARGET = $(EBIN)/$(APP_FILE)
 # FLAGS
 # ----------------------------------------------------
 ERL_COMPILE_FLAGS += -Werror -I ../e3d $(TYPE_FLAGS) \
-'-Dwings_version="$(WINGS_VSN)"' -pa $(WINGS_INTL) $(USE_WX)
+'-Dwings_version="$(WINGS_VSN)"' -pa $(WINGS_INTL) -pa $(shell pwd)/../../wings*/ebin $(USE_WX)
 
 # ----------------------------------------------------
 # Targets
