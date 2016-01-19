@@ -67,7 +67,8 @@ TARGET_FILES= $(MODULES:%=$(EBIN)/%.beam)
 # ----------------------------------------------------
 # FLAGS
 # ----------------------------------------------------
-ERL_COMPILE_FLAGS += -pa $(WINGS_INTL) -Werror -I $(WINGS_TOP) $(TYPE_FLAGS) +debug_info
+ERL_COMPILE_FLAGS += -Werror -I $(WINGS_E3D) $(TYPE_FLAGS) \
+  +debug_info -pa $(WINGS_INTL) -pa $(shell pwd)/../../../wings*/ebin -I $(WINGS_INTL)
 
 # ----------------------------------------------------
 # Targets
