@@ -57,7 +57,6 @@ macosx: all lang
 #
 .PHONY: unix
 unix: all lang
-	escript tools/release
 
 #
 # Build the source distribution.
